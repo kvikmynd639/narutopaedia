@@ -22,7 +22,7 @@ export default {
     };
   },
   created() {
-    axios.get('https://narutodb.xyz/api/character?page=1&limit=20')
+    axios.get('https://naruto-api-rsl3.onrender.com/')
       .then(response => {
         this.characters = response.data;
       })
