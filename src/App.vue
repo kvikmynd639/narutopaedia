@@ -1,26 +1,37 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <v-app>
+    <v-main>
+      <v-container>
+        <character-list @characterSelected="selectCharacter"></character-list>
+        <character-detail :character="selectedCharacter"></character-detail>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CharacterList from './components/CharacterList.vue';
+import CharacterDetail from './components/CharacterDetail.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CharacterList,
+    CharacterDetail
+  },
+  data() {
+    return {
+      selectedCharacter: null
+    };
+  },
+  methods: {
+    selectCharacter(character) {
+      this.selectedCharacter = character;
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+/* Add any global styles here */
 </style>
