@@ -1,5 +1,8 @@
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 py-2">
+    <div class="mx-auto items-center justify-center flex flex-col">
+      <img src="https://seeklogo.com/images/K/konoha_leaf-logo-277E238E29-seeklogo.com.png" class="w-58 h-36" />
+    </div>
     <h1 class="col-span-full text-center text-3xl font-bold mb-6">Naruto Characters</h1>
     <div v-for="character in characters" :key="character.id" @click="selectCharacter(character)" class="hover:bg-gray-200 bg-white rounded-lg shadow-lg cursor-pointer transition duration-300">
       <div class="relative overflow-hidden rounded-t-lg">
