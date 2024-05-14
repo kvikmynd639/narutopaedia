@@ -1,28 +1,34 @@
 <template>
-  <v-app>
-    <v-main>
-      <v-container>
-        <character-list @characterSelected="selectCharacter"></character-list>
-        <character-detail :character="selectedCharacter"></character-detail>
-      </v-container>
-    </v-main>
-  </v-app>
+  <div>
+    <CharacterList :characters="characters" @select-character="selectCharacter" />
+    <CharacterDetail :character="selectedCharacter" />
+  </div>
 </template>
 
 <script>
+import axios from 'axios';
 import CharacterList from './components/CharacterList.vue';
 import CharacterDetail from './components/CharacterDetail.vue';
 
 export default {
-  name: 'App',
   components: {
     CharacterList,
     CharacterDetail
   },
   data() {
     return {
+      characters: [],
       selectedCharacter: null
     };
+  },
+  created() {
+    axios.get('https://narutodb.xyz/api/character?page=1&limit=20')
+      .then(response => {
+        this.characters = response.data;
+      })
+      .catch(error => {
+        console.error('Error fetching characters:', error);
+      });
   },
   methods: {
     selectCharacter(character) {
@@ -31,7 +37,3 @@ export default {
   }
 };
 </script>
-
-<style>
-/* Add any global styles here */
-</style>

@@ -1,29 +1,21 @@
 <template>
-    <v-container v-if="character">
-      <v-row>
-        <v-col cols="12">
-          <v-card>
-            <v-card-title>{{ character.name }}</v-card-title>
-            <v-card-text>
-              <strong>Age:</strong> {{ character.age }}<br>
-              <strong>Gender:</strong> {{ character.gender }}<br>
-              <strong>Occupation:</strong> {{ character.occupation }}<br>
-              <strong>Description:</strong> {{ character.description }}
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
+    <div v-if="character">
+      <h2>{{ character.name }}</h2>
+      <img :src="character.images" alt="Character Image" style="max-width: 200px;">
+      <!-- Display other character details as needed -->
+    </div>
+    <p v-else>No character selected</p>
   </template>
   
   <script>
   export default {
     name: 'CharacterDetail',
-    props: ['character']
+    props: {
+      character: {
+        type: Object,
+        default: null
+      }
+    }
   };
   </script>
-  
-  <style scoped>
-  /* Add any component-specific styles here */
-  </style>
   
