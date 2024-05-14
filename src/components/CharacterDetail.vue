@@ -33,7 +33,3 @@
   };
   </script>
   
-  <style scoped>
-  /* Add scoped styles here */
-  </style>
-  
